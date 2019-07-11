@@ -8,6 +8,9 @@ namespace SacramentPlanner.Models
 {
    public class Hymn
    {
+
+      public int HymnID { get; set; }
+
       [Range(0, 300)]
       public int Page { get; set; }
 

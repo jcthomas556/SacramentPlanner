@@ -11,7 +11,5 @@ namespace SacramentPlanner.Models
 
       public string Name { get; set; }
 
-
-
    }
 }
