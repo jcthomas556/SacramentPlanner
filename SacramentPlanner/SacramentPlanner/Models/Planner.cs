@@ -12,7 +12,7 @@ namespace SacramentPlanner.Models
       public int PlannerID { get; set; }
 
       [DataType(DataType.Date)]
-      [DisplayFormat(DataFormatString = "{0:MMMM dd, YYYY}", ApplyFormatInEditMode = true)]
+      [DisplayFormat(DataFormatString = "{0:MMMM dd, yyyy}", ApplyFormatInEditMode = true)]
       [Display(Name = "Sacrament Date")]
       public DateTime SacramentDate { get; set; }
       
@@ -29,6 +29,9 @@ namespace SacramentPlanner.Models
   
       [StringLength(50)]
       public string Invocation { get; set; }
+
+      [StringLength(50)]
+      public string Benediction { get; set; }
 
       public ICollection<Speaker> Speakers { get; set; }
 
