@@ -4011,6 +4011,13 @@ input[type="button"].btn-block {
   border-radius: 1rem;
 }
 
+.colored {
+   background-color: #4B2204;
+}
+.coloredTan {
+   background-color: #F3F0DF;
+}
+
 .custom-range::-ms-fill-upper {
   margin-right: 15px;
   background-color: #dee2e6;
@@ -4156,19 +4163,21 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  
 }
 
-.navbar > .container,
-.navbar > .container-fluid {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
+   .navbar > .container,
+   .navbar > .container-fluid {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      background-color: siennsaddlebrowna;
+   }
 
 .navbar-brand {
   display: inline-block;
@@ -4178,6 +4187,7 @@ input[type="button"].btn-block {
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
+
 }
 
 .navbar-brand:hover, .navbar-brand:focus {
@@ -4192,6 +4202,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
 }
 
 .navbar-nav .nav-link {
@@ -4243,11 +4254,12 @@ input[type="button"].btn-block {
 }
 
 @media (max-width: 575.98px) {
-  .navbar-expand-sm > .container,
-  .navbar-expand-sm > .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-  }
+   .navbar-expand-sm > .container,
+   .navbar-expand-sm > .container-fluid {
+      padding-right: 0;
+      padding-left: 0;
+      background-color: red;
+   }
 }
 
 @media (min-width: 576px) {
@@ -4256,6 +4268,7 @@ input[type="button"].btn-block {
     flex-flow: row nowrap;
     -ms-flex-pack: start;
     justify-content: flex-start;
+
   }
   .navbar-expand-sm .navbar-nav {
     -ms-flex-direction: row;
@@ -4455,15 +4468,15 @@ input[type="button"].btn-block {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
@@ -6589,7 +6602,7 @@ button.bg-dark:focus {
 }
 
 .bg-white {
-  background-color: #fff !important;
+   background-color: #4B2204 !important;
 }
 
 .bg-transparent {
@@ -9906,7 +9919,7 @@ a.text-light:hover, a.text-light:focus {
 }
 
 .text-dark {
-  color: #343a40 !important;
+  color: #343a40 ;
 }
 
 a.text-dark:hover, a.text-dark:focus {
