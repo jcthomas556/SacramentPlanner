@@ -34,7 +34,10 @@ namespace SacramentPlanner.Controllers
             }
 
             var planner = await _context.Planners
-                .FirstOrDefaultAsync(m => m.PlannerID == id);
+            .Include(s => s.Speakers)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.PlannerID == id);
+
             if (planner == null)
             {
                 return NotFound();
@@ -54,7 +57,7 @@ namespace SacramentPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlannerID,SacramentDate,Ward,Presiding,Conducting,Invocation")] Planner planner)
+        public async Task<IActionResult> Create([Bind("PlannerID,SacramentDate,Ward,Presiding,Conducting,Invocation,Speakers")] Planner planner)
         {
             if (ModelState.IsValid)
             {

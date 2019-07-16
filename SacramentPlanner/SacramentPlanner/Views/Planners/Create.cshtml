@@ -37,9 +37,20 @@
                 <input asp-for="Invocation" class="form-control" />
                 <span asp-validation-for="Invocation" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <div id="speakers"></div>
+            <input id="btnAddSpeaker" type="button" value="Add Speaker" onclick="myFunction()" />
+
+            <script>
+                var noOfSpeaker = 0;
+                function myFunction() {
+                    $("#speakers").append("<input type='text' name='Speakers[" + noOfSpeaker + "].Name' /><p>");
+                    noOfSpeaker++;
+                }
+            </script>
+            <p>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
         </form>
     </div>
 </div>
