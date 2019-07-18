@@ -35,8 +35,11 @@ namespace SacramentPlanner.Controllers
 
             var planner = await _context.Planners
             .Include(s => s.Speakers)
+            .Include(h => h.Hymns)
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.PlannerID == id);
+
+          
 
             if (planner == null)
             {
@@ -57,7 +60,7 @@ namespace SacramentPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlannerID,SacramentDate,Ward,Presiding,Conducting,Invocation,Benediction,Speakers")] Planner planner)
+        public async Task<IActionResult> Create([Bind("PlannerID,SacramentDate,Ward,Presiding,Conducting,Invocation,Benediction,Speakers,Hymns")] Planner planner)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +79,14 @@ namespace SacramentPlanner.Controllers
                 return NotFound();
             }
 
-            var planner = await _context.Planners.FindAsync(id);
+         var planner = await _context.Planners
+         .Include(s => s.Speakers)
+         .Include(h => h.Hymns)
+         .AsNoTracking()
+         .FirstOrDefaultAsync(m => m.PlannerID == id);
+
+
+      
             if (planner == null)
             {
                 return NotFound();
@@ -89,7 +99,7 @@ namespace SacramentPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PlannerID,SacramentDate,Ward,Presiding,Conducting,Invocation,Benediction")] Planner planner)
+        public async Task<IActionResult> Edit(int id, [Bind("PlannerID,SacramentDate,Ward,Presiding,Conducting,Invocation,Benediction,Speakers,Hymns")] Planner planner)
         {
             if (id != planner.PlannerID)
             {
@@ -127,8 +137,14 @@ namespace SacramentPlanner.Controllers
                 return NotFound();
             }
 
-            var planner = await _context.Planners
-                .FirstOrDefaultAsync(m => m.PlannerID == id);
+
+         var planner = await _context.Planners
+         .Include(s => s.Speakers)
+         .Include(h => h.Hymns)
+         .AsNoTracking()
+         .FirstOrDefaultAsync(m => m.PlannerID == id);
+
+
             if (planner == null)
             {
                 return NotFound();
@@ -142,8 +158,16 @@ namespace SacramentPlanner.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var planner = await _context.Planners.FindAsync(id);
-            _context.Planners.Remove(planner);
+
+
+
+         var planner = await _context.Planners
+     .Include(s => s.Speakers)
+     .Include(h => h.Hymns)
+     .AsNoTracking()
+     .FirstOrDefaultAsync(m => m.PlannerID == id);
+
+         _context.Planners.Remove(planner);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

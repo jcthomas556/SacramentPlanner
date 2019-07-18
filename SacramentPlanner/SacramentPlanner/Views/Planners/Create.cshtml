@@ -45,13 +45,23 @@
          <div id="speakers">
             <p>Speakers</p>
          </div>
-         <input id="btnAddSpeaker" type="button" value="Add Speaker" class="btn btn-primary; colored " onclick="myFunction()" style="color:white;" />
+         <div id="hymns">
+            <p>Hymns</p>
+         </div>
 
+         <input id="btnAddSpeaker" type="button" value="Add Speaker" class="btn btn-primary; colored " onclick="addSpeaker()" style="color:white;" />
+         <input id="btnAddHymn" type="button" value="Add Hymn" class="btn btn-primary; colored " onclick="addHymn()" style="color:white;" />
+        
          <script>
-            var noOfSpeaker = 0;
-            function myFunction() {
+         var noOfSpeaker = 0;
+         var noOfHymn = 0;
+            function addSpeaker() {
                $("#speakers").append("<input type='text' class='form-control' name='Speakers[" + noOfSpeaker + "].Name' /><p>");
                noOfSpeaker++;
+            }
+            function addHymn() {
+                $("#hymns").append("<input type='text' class='form-control' name='Hymns[" + noOfHymn + "].Title' /><p>");
+               noOfHymn++;
             }
          </script>
          <p>

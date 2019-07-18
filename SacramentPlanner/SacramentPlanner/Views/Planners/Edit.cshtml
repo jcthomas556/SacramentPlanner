@@ -44,19 +44,41 @@
             <span asp-validation-for="Benediction" class="text-danger"></span>
          </div>
          <div id="speakers">
-            <p>Speakers</p>
+            <p class="control-label">Speakers</p>
+            @for (int i = 0; i < Model.Speakers.Count; i++)
+            {
+               var input = @Model.Speakers.ElementAt(i).Name;
+
+               <input class="form-control" type="text" name="Speakers[@i].Name" value='@input' />
+            }
          </div>
-         <input id="btnAddSpeaker" type="button" value="Add Speaker" class="btn btn-primary; colored " onclick="myFunction()" style=" color:white;" />
+
+         <br>
+         <div id="hymns">
+            <p class="control-label">Hymns</p>
+            @for (int i = 0; i < Model.Hymns.Count; i++)
+            {
+               var input = @Model.Hymns.ElementAt(i).Title;
+
+               <input class="form-control" type="text" name="Hymns[@i].Title" value='@input' />
+            }
+         </div>
+         <input id="btnAddSpeaker" type="button" value="Add Speaker" class="btn btn-primary; colored " onclick="addSpeaker()" style=" color:white;" />
+         <input id="btnAddHymn" type="button" value="Add Hymn" class="btn btn-primary; colored " onclick="addHymn()" style=" color:white;" />
 
          <div class="form-group" style="padding-top:5px;">
             <input type="submit" value="Save" class="btn btn-primary" />
          </div>
          <script>
             var noOfSpeaker = 0;
-            function myFunction() {
-
+            var noOfHymn = 0;
+            function addSpeaker() {
                $("#speakers").append("<input type='text' class='form-control' name='Speakers[" + noOfSpeaker + "].Name' /><p>");
                noOfSpeaker++;
+            }
+            function addHymn() {
+               $("#hymns").append("<input type='text' class='form-control' name='Hymns[" + noOfHymn + "].Name' /><p>");
+               noOfHymn++;
             }
          </script>
       </form>
@@ -70,3 +92,6 @@
 @section Scripts {
    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
